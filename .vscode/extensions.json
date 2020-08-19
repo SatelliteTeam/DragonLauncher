@@ -1,0 +1,14 @@
+{
+	"recommendations": [
+		"dbaeumer.vscode-eslint",
+		"esbenp.prettier-vscode",
+		"octref.vetur",
+		"editorconfig.editorconfig",
+		"mikestead.dotenv",
+		"eg2.vscode-npm-script",
+		"christian-kohler.npm-intellisense",
+		"codezombiech.gitignore",
+		"visualstudioexptteam.vscodeintellicode",
+		"christian-kohler.path-intellisense"
+	  ]
+}

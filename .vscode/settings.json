@@ -1,0 +1,19 @@
+{
+	"eslint.format.enable": true,
+	"eslint.validate": ["javascript", "typescript", "vue" ,"json"],
+	"editor.suggestSelection": "first",
+	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+	"typescript.suggest.paths": false,
+	"[javascript]": {
+        "editor.formatOnSave": false
+    },
+    "[typescript]": {
+		"editor.formatOnSave": false
+	},
+	"[json]": {
+		"editor.formatOnSave": false
+	},
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true
+    },
+}
