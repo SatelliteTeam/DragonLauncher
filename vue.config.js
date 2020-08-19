@@ -1,11 +1,13 @@
 module.exports = {
-  publicPath: "",
-  css: {
-    sourceMap: true
-  },
-  pluginOptions: {
-    electronBuilder: {
-      outputDir: "dist/electron/"
-    }
-  }
+	publicPath: '',
+	assetsDir: 'assets',
+	runtimeCompiler: true,
+	css: {
+		sourceMap: true,
+	},
+	pluginOptions: {
+		electronBuilder: {
+			outputDir: 'dist/electron/',
+		},
+	},
 };

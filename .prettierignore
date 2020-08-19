@@ -1,0 +1,6 @@
+dist/
+!tsconfig.json
+!package.json
+package-lock.json
+!/.*rc.js
+node_modules/*
