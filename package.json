@@ -14,7 +14,15 @@
 	},
 	"main": "background.js",
 	"dependencies": {
+		"@fortawesome/fontawesome-svg-core": "^1.2.30",
+		"@fortawesome/free-brands-svg-icons": "^5.14.0",
+		"@fortawesome/free-regular-svg-icons": "^5.14.0",
+		"@fortawesome/free-solid-svg-icons": "^5.14.0",
+		"@fortawesome/vue-fontawesome": "^0.1.10",
+		"bootstrap": "^4.5.2",
+		"bootstrap-vue": "^2.16.0",
 		"core-js": "^3.6.5",
+		"popper.js": "^1.16.1",
 		"vue": "^2.6.11",
 		"vue-router": "^3.2.0",
 		"vuex": "^3.4.0"
