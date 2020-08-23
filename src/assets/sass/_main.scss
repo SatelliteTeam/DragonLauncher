@@ -7,3 +7,21 @@ html, body, #app {
 	min-height: 100% !important;
 	height: 100% !important;
 }
+
+#logo-wrapper {
+	#logo{
+		height: 0%;
+	}
+	#logotext {
+		opacity: 0;
+		font-size: 3em;
+	}
+	#sub-logo{
+		opacity: 0;
+		width: 0%;
+		hr {
+			height: 0.2em;
+			background-color: #fff;
+		}
+	}
+}
