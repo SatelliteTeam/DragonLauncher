@@ -1,7 +1,7 @@
 <template>
 	<b-container id="login" class="h-100" fluid>
-		<b-row align-v="stretch" align-content="center" align-h="center" class="h-100">
-			<b-col id="logo-wrapper" align-self="center" cols="7" class="h-100">
+		<b-row align-v="center" align-content="center" align-h="center" class="h-100">
+			<b-col id="logo-wrapper" align-self="center" cols="7">
 				<logo
 					:key="startLoad"
 					:direction="'alternate'"
@@ -58,7 +58,8 @@ export default Vue.extend({
 					})
 						.add({
 							targets: '#logo-wrapper #logo',
-							height: ['0%', '75%'],
+							translateX: ['50%', '0%'],
+							translateY: ['20%', '0%'],
 						})
 						.add({
 							targets: '#form-wrapper',
