@@ -1,18 +1,56 @@
-# dragonlauncher
+<p align="center">
+  <img width="256" height="256" src="https://imgur.com/7vtEiVr.png">
+</p>
 
-## Project setup
+<h1 align="center">Dragon Launcher</h1>
+
+<p align="center">
+	<a href="https://github.com/SatelliteTeam/DragonLauncher/tree/master/.github/CODE_OF_CONDUCT.md">
+    	<img src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg?style=for-the-badge" alt="Code of conduct">
+  	</a>
+	<img alt="GitHub" src="https://img.shields.io/github/license/SatelliteTeam/DragonLauncher?style=for-the-badge">
+	<img alt="GitHub package.json version (master)" src="https://img.shields.io/github/package-json/v/SatelliteTeam/DragonLauncher/master?style=for-the-badge">
+</p>
+
+# About 📖
+This project was born out of pure curiosity, need and desire for a launcher that looks modern, reliable, multiplatform, taking inspiration from other projects such as [MultiMC](https://multimc.org/) or [Technic](https://www.technicpack.net/) solving problems and adding that many recurring players of minecraft and more specifically of modpacks have found and been they have adapted over the years.
+
+## Goals and Future Features 📑
+
+- Multiple accounts support.
+- Multiple Instance configuration and management.
+- Skin management directly from the launcher.
+- Forge, Fabric and Optifine management installation support.
+- Built-in mods search and download.
+- Built-in Modpack creator for sharing and installation inside other user's launcher.
+- Cloud backups for configuration, maps, logs, and screenshots.
+- A crash analyser and fix suggestions.
+- A friendly community
+
+---
+# Contributing 👍
+As the first project oriented to this approach, in addition to just starting, there are and will be many flaws or things to improve so if you want to collaborate or contribute your great ideas, we invite you to see the [collaboration guide](https://github.com/SatelliteTeam/DragonLauncher/tree/master/.github/CONTRIBUTING.md) and our [code of conduct](https://github.com/SatelliteTeam/DragonLauncher/tree/master/.github/CODE_OF_CONDUCT.md) **__currently CONTRIBUTOR COVENANT CODE OF CONDUCT__** to open your first issue or pull request 😄.
+
+## Project setup 🔧
+
+As first aproach to the project you must know the basics of [Javascript](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide), [Typescript](https://www.typescriptlang.org/docs/), [Vue JS](https://vuejs.org/v2/guide/), [Vue CLI](https://cli.vuejs.org/guide/), [Electron](https://www.electronjs.org/docs/README), [Bash](https://guide.bash.academy/) and [Node JS](https://nodejs.org/en/docs/guides/)
+to know how many commands and dev features are builded and planned.
+
+The base of the project are Typescript in combination of Vue CLI 3 and their plugin of [Electron builder](https://nklayman.github.io/vue-cli-plugin-electron-builder/).
+
+### Install project dependencies
 ```
 npm install
 ```
 
 ### Compiles and hot-reloads for development
 ```
-npm run serve
+npm run electron:serve
 ```
 
 ### Compiles and minifies for production
 ```
-npm run build
+npm run electron:build
 ```
 
 ### Run your unit tests
@@ -25,5 +63,10 @@ npm run test:unit
 npm run lint
 ```
 
-### Customize configuration
+### Customize project configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
+
+---
+
+# LICENSE ©️
+Currently this project is under [GPLV3 License](https://www.gnu.org/licenses/gpl-3.0.html)
