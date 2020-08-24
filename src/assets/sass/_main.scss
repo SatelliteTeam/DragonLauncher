@@ -10,6 +10,7 @@ html, body, #app {
 
 #logo-wrapper {
 	#logo{
+		max-width: 80% !important;
 		transform: translate(50%, 20%);
 	}
 	#logotext {

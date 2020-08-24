@@ -5,11 +5,11 @@
 				<logo
 					:key="startLoad"
 					:direction="'alternate'"
-					:duration="5500"
+					:duration="4500"
 					:loop="startLoop"
 					@mounted="logoMounted"
 				></logo>
-				<h1 id="logotext" class="text-center">
+				<h1 id="logotext" class="text-center my-5">
 					Dragon Launcher
 				</h1>
 				<div id="sub-logo">
@@ -51,7 +51,7 @@ export default Vue.extend({
 					Anime.timeline({
 						targets: '#logo-wrapper #logotext',
 						'font-size': ['3em', '5em'],
-						duration: 1500,
+						duration: 800,
 						delay: 500,
 						direction: 'normal',
 						easing: 'easeInOutQuad',
