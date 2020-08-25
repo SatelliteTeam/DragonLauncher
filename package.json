@@ -2,6 +2,11 @@
 	"name": "dragonlauncher",
 	"version": "0.1.0",
 	"private": true,
+	"author": {
+		"name": "SatelliteTeam",
+		"url": "https://github.com/SatelliteTeam/DragonLauncher",
+		"email": "D4RKAR_117@outlook.com"
+	},
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "vue-cli-service build",
@@ -10,7 +15,8 @@
 		"electron:build": "vue-cli-service electron:build",
 		"electron:serve": "vue-cli-service electron:serve",
 		"postinstall": "electron-builder install-app-deps",
-		"postuninstall": "electron-builder install-app-deps"
+		"postuninstall": "electron-builder install-app-deps",
+		"build:linux": "npm run electron:build -- --linux deb"
 	},
 	"main": "background.js",
 	"dependencies": {

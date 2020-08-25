@@ -1,0 +1,52 @@
+.form-group{
+
+	.form-label, .form-text{
+		transition: 0.5s;
+	}
+
+	&:focus-within .form-label, &:focus-within .form-text{
+		transition: 0.5s;
+		color: #6a32b8;
+	}
+
+	.form-control {
+		background-color: #313131;
+		outline: none;
+		border: 0;
+		color: #a8a8a8;
+		transition: 0.5s;
+		border-radius: 25px;
+
+		&.is-valid{
+			color: #259c40;
+		}
+
+		&.is-invalid{
+			color: #941a25;
+		}
+
+		&:focus{
+			background-color: #303030;
+			border-bottom: medium solid #5117a2;
+			box-shadow: none;
+			color: #fff;
+			width: 100%;
+			transition: 0.5s;
+
+			&.is-valid{
+				color: #259c40;
+				border-bottom: medium solid #259c40;
+			}
+
+			&.is-invalid{
+				color: #941a25;
+				border-bottom: medium solid #941a25;
+			}
+		}
+
+
+	}
+
+}
+
+

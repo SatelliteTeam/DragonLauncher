@@ -19,18 +19,22 @@
 					</h3>
 				</div>
 			</b-col>
-			<b-col id="form-wrapper" cols="5" class="h-100"></b-col>
+			<b-col id="form-wrapper" cols="5" class="h-100">
+				<login-form></login-form>
+			</b-col>
 		</b-row>
 	</b-container>
 </template>
 <script lang="ts">
 import Vue from 'vue';
-import Logo from '@/components/SvgLogo.vue';
+import Logo from '@/components/single/SvgLogo.vue';
+import LoginForm from '@/components/composed/LoginForm.vue';
 import Anime from 'animejs';
 export default Vue.extend({
 	name: 'Login',
 	components: {
 		Logo,
+		LoginForm,
 	},
 	data: function() {
 		return {
