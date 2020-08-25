@@ -21,16 +21,16 @@
 					<b-form @submit.prevent="handleSubmit(dispatchLogin)">
 						<ValidationProvider
 							#default="{ valid, errors }"
-							:rules="{ required: true, alpha_dash: true, min: 3, max: 16 }"
+							:rules="{ required: true, email: true }"
 							name="Minecraft user name"
 							slim
 						>
 							<b-form-group
 								id="username-group"
-								label="Minecraft user name"
+								label="Minecraft user email"
 								label-for="username-input"
 								label-class="form-label"
-								description="We'll never share or store your user name with anyone else."
+								description="We'll never share or store your user email with anyone else."
 							>
 								<b-form-input
 									id="username-input"
@@ -85,6 +85,7 @@
 import Vue from 'vue';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { isValid } from '@/app/common-functions';
+import { dispatchLogin } from '@/app/services/auth';
 export default Vue.extend({
 	name: 'LoginForm',
 	components: {
@@ -101,7 +102,15 @@ export default Vue.extend({
 	},
 	methods: {
 		dispatchLogin: async function() {
-			console.log(this.formData);
+			try {
+				const auth = await dispatchLogin(this.formData);
+				console.info('Successfull Login');
+				console.info({ auth });
+			} catch (err) {
+				if (err.statusCode === 403 && err.errorMessage === 'Invalid credentials. Invalid username or password.')
+					console.error('Invalid Login');
+				else console.error(err);
+			}
 		},
 		isValid: function(errors: string[], valid: boolean | undefined): boolean | null {
 			return isValid(errors, valid);

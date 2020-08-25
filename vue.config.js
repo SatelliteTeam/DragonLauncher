@@ -8,6 +8,7 @@ module.exports = {
 	pluginOptions: {
 		electronBuilder: {
 			outputDir: 'dist/electron/',
+			nodeIntegration: true,
 		},
 	},
 };
