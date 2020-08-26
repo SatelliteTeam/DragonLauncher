@@ -10,7 +10,7 @@ html, body, #app {
 
 #logo-wrapper {
 	#logo{
-		max-width: 80% !important;
+		max-width: 70% !important;
 		transform: translate(50%, 20%);
 	}
 	#logotext {
@@ -25,4 +25,9 @@ html, body, #app {
 			background-color: #fff;
 		}
 	}
+}
+
+#form-wrapper{
+	transition: visibility 0.5s ease-in-out;
+	visibility: hidden;
 }

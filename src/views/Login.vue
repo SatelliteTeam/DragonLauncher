@@ -67,6 +67,12 @@ export default Vue.extend({
 						})
 						.add({
 							targets: '#form-wrapper',
+							begin: function() {
+								(document.querySelector('#form-wrapper') as HTMLElement).style.visibility = 'visible';
+							},
+						})
+						.add({
+							targets: '#form-wrapper',
 							'background-color': '#282828',
 						})
 						.add({

@@ -27,7 +27,7 @@
 						>
 							<b-form-group
 								id="username-group"
-								label="Minecraft user email"
+								label="Minecraft email"
 								label-for="username-input"
 								label-class="form-label"
 								description="We'll never share or store your user email with anyone else."
@@ -37,7 +37,7 @@
 									v-model="formData.username"
 									type="text"
 									:state="isValid(errors, valid)"
-									placeholder="Enter your Minecraft User name"
+									placeholder="Enter your Minecraft email"
 									size="lg"
 								></b-form-input>
 								<b-form-invalid-feedback id="userNameLiveFeedback">{{
@@ -71,12 +71,20 @@
 								}}</b-form-invalid-feedback>
 							</b-form-group>
 						</ValidationProvider>
-						<b-button style="dark" type="submit" block>
-							Iniciar Sesion
+						<b-button style="dark" variant="outline-primary" size="lg" type="submit" block>
+							Login
 							<font-awesome-icon :icon="['fas', 'sign-in-alt']" />
 						</b-button>
 					</b-form>
 				</ValidationObserver>
+			</b-col>
+		</b-row>
+		<b-row v-if="headUrl !== ''" align-content="center" align-h="center" align-v="stretch">
+			<b-col cols="12" class="text-center my-2">
+				<b-img fluid :src="headUrl"></b-img>
+			</b-col>
+			<b-col cols="12" class="text-center my-2">
+				<h2 class="text-muted">Welcome {{ auth.profile.name }} !</h2>
 			</b-col>
 		</b-row>
 	</b-container>
@@ -86,6 +94,8 @@ import Vue from 'vue';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { isValid } from '@/app/common-functions';
 import { dispatchLogin } from '@/app/services/auth';
+import Swal from 'sweetalert2';
+import _ from 'lodash';
 export default Vue.extend({
 	name: 'LoginForm',
 	components: {
@@ -98,17 +108,40 @@ export default Vue.extend({
 				username: '',
 				password: '',
 			},
+			auth: {
+				profile: {
+					id: '',
+					name: '',
+				},
+				accessToken: '',
+				clientToken: '',
+			},
 		};
 	},
+	computed: {
+		headUrl: function(): string {
+			if (!_.isEmpty(this.auth.profile) && this.auth.profile.id !== '')
+				return `https://crafatar.com/renders/head/${this.auth.profile.id}`;
+			else return '';
+		},
+	},
 	methods: {
-		dispatchLogin: async function() {
+		dispatchLogin: async function(): Promise<void> {
 			try {
 				const auth = await dispatchLogin(this.formData);
-				console.info('Successfull Login');
-				console.info({ auth });
+				const { selectedProfile, accessToken, clientToken } = auth;
+				this.auth.profile = selectedProfile;
+				this.auth.accessToken = accessToken;
+				this.auth.clientToken = clientToken;
 			} catch (err) {
 				if (err.statusCode === 403 && err.errorMessage === 'Invalid credentials. Invalid username or password.')
-					console.error('Invalid Login');
+					Swal.fire({
+						icon: 'error',
+						titleText: 'Invalid credentials',
+						text: 'Invalid email or password, verify your data and try again.',
+						timer: 2500,
+						timerProgressBar: true,
+					});
 				else console.error(err);
 			}
 		},
