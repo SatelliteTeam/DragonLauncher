@@ -18,7 +18,7 @@
 		<b-row align-content="center" align-h="center" align-v="stretch">
 			<b-col class="my-5">
 				<ValidationObserver #default="{ handleSubmit }" slim>
-					<b-form @submit.prevent="handleSubmit(dispatchLogin)">
+					<b-form v-if="auth.profile.id === ''" @submit.prevent="handleSubmit(dispatchLogin)">
 						<ValidationProvider
 							#default="{ valid, errors }"
 							:rules="{ required: true, email: true }"
@@ -79,7 +79,12 @@
 				</ValidationObserver>
 			</b-col>
 		</b-row>
-		<b-row v-if="headUrl !== ''" align-content="center" align-h="center" align-v="stretch">
+		<b-row
+			v-if="headUrl !== '' && auth.profile.id !== ''"
+			align-content="center"
+			align-h="center"
+			align-v="stretch"
+		>
 			<b-col cols="12" class="text-center my-2">
 				<b-img fluid :src="headUrl"></b-img>
 			</b-col>
@@ -92,7 +97,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import { isValid } from '@/app/common-functions';
+import { isValid, storeItems, getItem } from '@/app/common-functions';
+import { SimpleProfile } from '@/app/common-types';
 import { dispatchLogin } from '@/app/services/auth';
 import Swal from 'sweetalert2';
 import _ from 'lodash';
@@ -109,12 +115,7 @@ export default Vue.extend({
 				password: '',
 			},
 			auth: {
-				profile: {
-					id: '',
-					name: '',
-				},
-				accessToken: '',
-				clientToken: '',
+				profile: {} as SimpleProfile,
 			},
 		};
 	},
@@ -125,14 +126,16 @@ export default Vue.extend({
 			else return '';
 		},
 	},
+	mounted: function() {
+		this.loadAuth();
+	},
 	methods: {
 		dispatchLogin: async function(): Promise<void> {
 			try {
 				const auth = await dispatchLogin(this.formData);
 				const { selectedProfile, accessToken, clientToken } = auth;
+				this.storeAuth(accessToken, clientToken, selectedProfile);
 				this.auth.profile = selectedProfile;
-				this.auth.accessToken = accessToken;
-				this.auth.clientToken = clientToken;
 			} catch (err) {
 				if (err.statusCode === 403 && err.errorMessage === 'Invalid credentials. Invalid username or password.')
 					Swal.fire({
@@ -147,6 +150,18 @@ export default Vue.extend({
 		},
 		isValid: function(errors: string[], valid: boolean | undefined): boolean | null {
 			return isValid(errors, valid);
+		},
+		storeAuth: function(accessToken: string, clientToken: string, authProfile: object): void {
+			if (accessToken !== '' && clientToken !== '' && !_.isEmpty(authProfile))
+				storeItems([
+					{ name: 'accessToken', value: accessToken },
+					{ name: 'clientToken', value: clientToken },
+					{ name: 'authProfile', value: authProfile },
+				]);
+		},
+		loadAuth: function(): void {
+			const authLoad = getItem('authProfile');
+			this.auth.profile = authLoad as SimpleProfile;
 		},
 	},
 });

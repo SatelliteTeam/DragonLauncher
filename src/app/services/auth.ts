@@ -1,9 +1,5 @@
 import { login, Authentication } from '@xmcl/user';
-
-interface Credentials {
-	username: string;
-	password: string;
-}
+import { Credentials } from '@/app/common-types';
 
 export async function dispatchLogin(credentials: Credentials): Promise<Authentication> {
 	const { username, password } = credentials;
