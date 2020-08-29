@@ -2,8 +2,6 @@
 appId: com.satellite.dragon
 productName: Dragon Launcher
 copyright: Copyright © 2020 ${author}
-directories:
-  - buildResources: "./src/build/resources"
 mac:
   category: public.app-category.games
   target:
