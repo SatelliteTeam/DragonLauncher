@@ -16,7 +16,10 @@
 		"electron:serve": "vue-cli-service electron:serve",
 		"postinstall": "electron-builder install-app-deps",
 		"postuninstall": "electron-builder install-app-deps",
-		"build:linux": "npm run electron:build -- --linux deb"
+		"build:linux": "npm run electron:build -- --linux",
+		"build:mac": "npm run electron:build -- --mac",
+		"build:win": "npm run electron:build -- --win",
+		"build:all": "npm run electron:build -- -mwl"
 	},
 	"main": "background.js",
 	"dependencies": {
