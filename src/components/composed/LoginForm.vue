@@ -2,7 +2,7 @@
 	<b-container id="loginForm" class="my-5 py-4">
 		<b-row align-content="center" align-h="center" align-v="stretch">
 			<b-col cols="10">
-				<h1 class="text-left">
+				<h1 id="loginTitle" class="text-left">
 					Login
 				</h1>
 				<h4 class="text-left text-muted">
