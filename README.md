@@ -10,6 +10,7 @@
   	</a>
 	<img alt="GitHub" src="https://img.shields.io/github/license/SatelliteTeam/DragonLauncher?style=for-the-badge">
 	<img alt="GitHub package.json version (master)" src="https://img.shields.io/github/package-json/v/SatelliteTeam/DragonLauncher/master?style=for-the-badge">
+	<img alt="GitHub package.json version (dev)" src="https://img.shields.io/github/package-json/v/SatelliteTeam/DragonLauncher/dev?style=for-the-badge">
 </p>
 
 # About 📖
@@ -31,12 +32,21 @@ This project was born out of pure curiosity, need and desire for a launcher that
 # Contributing 👍
 As the first project oriented to this approach, in addition to just starting, there are and will be many flaws or things to improve so if you want to collaborate or contribute your great ideas, we invite you to see the [collaboration guide](https://github.com/SatelliteTeam/DragonLauncher/tree/master/.github/CONTRIBUTING.md) and our [code of conduct](https://github.com/SatelliteTeam/DragonLauncher/tree/master/.github/CODE_OF_CONDUCT.md) **__currently CONTRIBUTOR COVENANT CODE OF CONDUCT__** to open your first issue or pull request 😄.
 
-## Project setup 🔧
+Also if you want to go deeper and create new features or want to create your own PR / FORK, see the core elements of the project to undestand ebtter how all it works 😄
 
-As first aproach to the project you must know the basics of [Javascript](https://developer.mozilla.org/es/docs/Web/JavaScript/Guide), [Typescript](https://www.typescriptlang.org/docs/), [Vue JS](https://vuejs.org/v2/guide/), [Vue CLI](https://cli.vuejs.org/guide/), [Electron](https://www.electronjs.org/docs/README), [Bash](https://guide.bash.academy/) and [Node JS](https://nodejs.org/en/docs/guides/)
-to know how many commands and dev features are builded and planned.
+### Core components and libraries
+|                  Core Components                 |                                                     Documentation                                                     |
+|:------------------------------------------------:|:---------------------------------------------------------------------------------------------------------------------:|
+|                      Node JS                     |                                      [Guide](https://nodejs.org/en/docs/guides/)                                      |
+|                       Bash                       |                                          [Guide](https://guide.bash.academy/)                                         |
+|                    Typescript                    |                                      [Docs](https://www.typescriptlang.org/docs/)                                     |
+|                      Vue JS                      |                                      [Docs / Guide](https://vuejs.org/v2/guide/)                                      |
+|                     Electron                     |                                     [Docs](https://www.electronjs.org/docs/README)                                    |
+|                   Launcher Core                  |                         [Repo / Docs](https://voxelum.github.io/minecraft-launcher-core-node/)                        |
+| Vue Electron Builder (Core and Vue Based plugin) | [Vue Plugin](https://nklayman.github.io/vue-cli-plugin-electron-builder/) \| [Core Docs](https://www.electron.build/) |
 
-The base of the project are Typescript in combination of Vue CLI 3 and their plugin of [Electron builder](https://nklayman.github.io/vue-cli-plugin-electron-builder/).
+## Project setup and command usage 🔧
+
 
 ### Install project dependencies
 ```
@@ -47,12 +57,28 @@ npm install
 ```
 npm run electron:serve
 ```
-
-### Compiles and minifies for production
+---
+### Compiles and create the installers for all the platforms that we supports (Linux, Windows and MacOS)
 ```
-npm run electron:build
+npm run build:all
 ```
+#### For Windows targeted builds use
+```
+npm run build:win
+```
+#### For MacOS targeted builds use
+```
+npm run build:mac
+```
+**__MacOS default package target are .dmg__**
 
+#### For Linux targeted builds use
+```
+npm run build:linux
+```
+**__Linux default package target are .deb__**
+
+---
 ### Run your unit tests
 ```
 npm run test:unit

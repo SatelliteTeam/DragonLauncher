@@ -12,11 +12,14 @@ let win: BrowserWindow | null;
 // Scheme must be registered before the app is ready
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { secure: true, standard: true } }]);
 
+// Disable CORS problems related with ELectron 9.0 See https://github.com/electron/electron/issues/23664
+app.commandLine.appendSwitch('disable-features', 'OutOfBlinkCors');
+
 function createWindow() {
 	// Create the browser window.
 	win = new BrowserWindow({
-		width: 800,
-		height: 600,
+		width: 1920,
+		height: 720,
 		webPreferences: {
 			// Use pluginOptions.nodeIntegration, leave this alone
 			// See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info

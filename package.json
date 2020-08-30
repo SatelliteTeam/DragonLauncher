@@ -1,7 +1,12 @@
 {
 	"name": "dragonlauncher",
-	"version": "0.1.0",
+	"version": "0.1.2",
 	"private": true,
+	"author": {
+		"name": "SatelliteTeam",
+		"url": "https://github.com/SatelliteTeam/DragonLauncher",
+		"email": "D4RKAR_117@outlook.com"
+	},
 	"scripts": {
 		"serve": "vue-cli-service serve",
 		"build": "vue-cli-service build",
@@ -9,8 +14,13 @@
 		"lint": "vue-cli-service lint",
 		"electron:build": "vue-cli-service electron:build",
 		"electron:serve": "vue-cli-service electron:serve",
+		"electron:generate-icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
 		"postinstall": "electron-builder install-app-deps",
-		"postuninstall": "electron-builder install-app-deps"
+		"postuninstall": "electron-builder install-app-deps",
+		"build:linux": "npm run electron:build -- --linux",
+		"build:mac": "npm run electron:build -- --mac",
+		"build:win": "npm run electron:build -- --win",
+		"build:all": "npm run electron:build -- -mwl"
 	},
 	"main": "background.js",
 	"dependencies": {
@@ -19,12 +29,17 @@
 		"@fortawesome/free-regular-svg-icons": "^5.14.0",
 		"@fortawesome/free-solid-svg-icons": "^5.14.0",
 		"@fortawesome/vue-fontawesome": "^0.1.10",
+		"@sweetalert2/theme-dark": "^3.2.0",
+		"@xmcl/user": "^2.1.3",
 		"animejs": "^3.2.0",
 		"bootstrap": "^4.5.2",
 		"bootstrap-vue": "^2.16.0",
 		"core-js": "^3.6.5",
+		"lodash": "^4.17.20",
 		"popper.js": "^1.16.1",
-		"vue": "^2.6.11",
+		"sweetalert2": "^9.17.1",
+		"vee-validate": "^3.3.9",
+		"vue": "^2.6.12",
 		"vue-router": "^3.2.0",
 		"vuex": "^3.4.0"
 	},
@@ -32,7 +47,8 @@
 		"@types/animejs": "^3.1.2",
 		"@types/electron-devtools-installer": "^2.2.0",
 		"@types/jest": "^24.0.19",
-		"@types/node": "^14.6.0",
+		"@types/lodash": "^4.14.161",
+		"@types/node": "^14.6.2",
 		"@typescript-eslint/eslint-plugin": "^2.33.0",
 		"@typescript-eslint/parser": "^2.33.0",
 		"@vue/cli-plugin-babel": "~4.5.0",
@@ -43,10 +59,11 @@
 		"@vue/cli-plugin-vuex": "~4.5.0",
 		"@vue/cli-service": "~4.5.0",
 		"@vue/eslint-config-prettier": "^6.0.0",
-		"@vue/eslint-config-typescript": "^5.0.2",
-		"@vue/test-utils": "^1.0.3",
+		"@vue/eslint-config-typescript": "^5.1.0",
+		"@vue/test-utils": "^1.0.5",
 		"electron": "^9.0.0",
 		"electron-devtools-installer": "^3.1.0",
+		"electron-icon-builder": "^1.0.2",
 		"eslint": "^6.7.2",
 		"eslint-plugin-prettier": "^3.1.3",
 		"eslint-plugin-vue": "^6.2.2",
@@ -57,7 +74,7 @@
 		"spectron": "^11.0.0",
 		"typescript": "~3.9.3",
 		"vue-cli-plugin-electron-builder": "^2.0.0-rc.4",
-		"vue-template-compiler": "^2.6.11"
+		"vue-template-compiler": "^2.6.12"
 	},
 	"gitHooks": {
 		"pre-commit": "lint-staged"
