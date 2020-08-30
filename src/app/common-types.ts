@@ -1,3 +1,4 @@
+import { AuthException } from '@xmcl/user';
 export interface Credentials {
 	username: string;
 	password: string;
@@ -11,4 +12,9 @@ export interface StorageItem {
 export interface SimpleProfile {
 	id: string;
 	name: string;
+}
+
+export interface CompleteAuthException extends AuthException {
+	statusCode: number;
+	statusMessage: string;
 }
