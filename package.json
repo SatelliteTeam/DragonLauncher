@@ -1,6 +1,6 @@
 {
 	"name": "dragonlauncher",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"private": true,
 	"author": {
 		"name": "SatelliteTeam",
@@ -39,7 +39,7 @@
 		"popper.js": "^1.16.1",
 		"sweetalert2": "^9.17.1",
 		"vee-validate": "^3.3.9",
-		"vue": "^2.6.11",
+		"vue": "^2.6.12",
 		"vue-router": "^3.2.0",
 		"vuex": "^3.4.0"
 	},
@@ -47,8 +47,8 @@
 		"@types/animejs": "^3.1.2",
 		"@types/electron-devtools-installer": "^2.2.0",
 		"@types/jest": "^24.0.19",
-		"@types/lodash": "^4.14.160",
-		"@types/node": "^14.6.0",
+		"@types/lodash": "^4.14.161",
+		"@types/node": "^14.6.2",
 		"@typescript-eslint/eslint-plugin": "^2.33.0",
 		"@typescript-eslint/parser": "^2.33.0",
 		"@vue/cli-plugin-babel": "~4.5.0",
@@ -59,8 +59,8 @@
 		"@vue/cli-plugin-vuex": "~4.5.0",
 		"@vue/cli-service": "~4.5.0",
 		"@vue/eslint-config-prettier": "^6.0.0",
-		"@vue/eslint-config-typescript": "^5.0.2",
-		"@vue/test-utils": "^1.0.3",
+		"@vue/eslint-config-typescript": "^5.1.0",
+		"@vue/test-utils": "^1.0.5",
 		"electron": "^9.0.0",
 		"electron-devtools-installer": "^3.1.0",
 		"electron-icon-builder": "^1.0.2",
@@ -74,7 +74,7 @@
 		"spectron": "^11.0.0",
 		"typescript": "~3.9.3",
 		"vue-cli-plugin-electron-builder": "^2.0.0-rc.4",
-		"vue-template-compiler": "^2.6.11"
+		"vue-template-compiler": "^2.6.12"
 	},
 	"gitHooks": {
 		"pre-commit": "lint-staged"
