@@ -9,6 +9,7 @@
 		"christian-kohler.npm-intellisense",
 		"codezombiech.gitignore",
 		"visualstudioexptteam.vscodeintellicode",
-		"christian-kohler.path-intellisense"
+		"christian-kohler.path-intellisense",
+		"cschleiden.vscode-github-actions"
 	  ]
 }
