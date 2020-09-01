@@ -1,4 +1,4 @@
-import { StorageItem } from '@/app/common-types';
+import { StorageItem } from '@/app/commonTypes';
 
 // Validates the Vee validate props to provide input valid state
 export function isValid(errors: string[], valid: boolean | undefined): boolean | null {

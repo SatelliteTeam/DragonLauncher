@@ -18,7 +18,8 @@ library.add(fas, fab, far);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 
-import '@/app/vee-validate';
+import { setupVee } from '@/app/vee-validate';
+setupVee();
 
 import '@/assets/sass/app.scss';
 
