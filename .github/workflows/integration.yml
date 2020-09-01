@@ -1,4 +1,4 @@
-name: Dragon Launcher @MASTER CI task
+name: master branch CI task
 
 on:
   pull_request:
