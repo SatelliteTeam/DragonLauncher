@@ -24,8 +24,8 @@ jobs:
       - run: npm ci
       - run: npm run test:unit
       - run: npm run build:all
-      - name: Coverage Reports
-      - uses: codecov/codecov-action@v1
+      - name: Upload Coverage Reports
+        uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage/clover.xml
