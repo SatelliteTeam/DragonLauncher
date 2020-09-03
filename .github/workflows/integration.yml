@@ -1,6 +1,8 @@
 name: master branch CI task
 
 on:
+  push:
+    branches: [ master, dev ]
   pull_request:
     branches: [ master ]
 
@@ -22,3 +24,11 @@ jobs:
       - run: npm ci
       - run: npm run test:unit
       - run: npm run build:all
+      - name: Coverage Reports
+      - uses: codecov/codecov-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          file: ./coverage/clover.xml
+          flags: unittests
+          name: codecov-umbrella
+          fail_ci_if_error: true

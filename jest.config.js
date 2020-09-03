@@ -1,4 +1,5 @@
 module.exports = {
+	collectCoverage: true,
 	preset: '@vue/cli-plugin-unit-jest/presets/typescript-and-babel',
 	transform: {
 		'vee-validate/dist/rules': 'babel-jest',
