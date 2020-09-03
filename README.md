@@ -11,6 +11,9 @@
 	<img alt="GitHub" src="https://img.shields.io/github/license/SatelliteTeam/DragonLauncher?style=for-the-badge">
 	<img alt="GitHub package.json version (master)" src="https://img.shields.io/github/package-json/v/SatelliteTeam/DragonLauncher/master?style=for-the-badge">
 	<img alt="GitHub package.json version (dev)" src="https://img.shields.io/github/package-json/v/SatelliteTeam/DragonLauncher/dev?style=for-the-badge">
+	<a href='https://coveralls.io/github/SatelliteTeam/DragonLauncher?branch=master'>
+		<img src='https://img.shields.io/coveralls/github/SatelliteTeam/DragonLauncher/master?style=for-the-badge' alt='Coverage Status' />
+	</a>
 </p>
 
 # About 📖
