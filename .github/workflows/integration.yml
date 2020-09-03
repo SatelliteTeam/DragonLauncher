@@ -2,33 +2,40 @@ name: master branch CI task
 
 on:
   push:
-    branches: [ master, dev ]
+    branches: 
+      - dev 
+      - master
   pull_request:
-    branches: [ master ]
-
+    branches:
+      - dev
+      - master
+      
 jobs:
-  perform_ci:
+  perform_tests:
+    name: Perform Tests and report code coverage
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: [ '12', '14' ]
+        node: ['12', '14']
     steps:
-      - uses: actions/checkout@v2
-      - name: Setup Node JS
-      - uses: actions/setup-node@v1
+      - uses: actions/checkout@v2.3.2
+      - name: Setup Node
+        uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node }}
+      - name: Install dependencies and perform the tests
         env:
           TEST_ACCOUNT_USERNAME: ${{ secrets.MINECRAFT_TEST_ACCOUNT_MAIL }}
           TEST_ACCOUNT_PASSWORD: ${{ secrets.MINECRAFT_TEST_ACCOUNT_PASS }}
-      - run: npm ci
-      - run: npm run test:unit
-      - run: npm run build:all
-      - name: Upload Coverage Reports
+        run: |
+          npm ci
+          npm run test:unit
+          npm run build:all
+      - name: Upload coverage reports to codecov
         uses: codecov/codecov-action@v1
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
           file: ./coverage/clover.xml
-          flags: unittests
-          name: codecov-umbrella
+          flags: unittests | integration
+          name: codecov-coverage
           fail_ci_if_error: true
