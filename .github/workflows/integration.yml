@@ -30,8 +30,7 @@ jobs:
         run: |
           npm ci
           npm run test:unit
-          npm run build:all
       - name: Upload coverage reports to coveralls
         uses: coverallsapp/github-action@master
         with:
-          github-token: ${{ secrets.COVERALLS_TOKEN }}
+          github-token: ${{ secrets.GITHUB_TOKEN }}
