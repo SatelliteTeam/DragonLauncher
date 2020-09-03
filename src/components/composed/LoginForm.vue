@@ -1,5 +1,5 @@
 <template>
-	<b-container id="loginForm" class="my-5 py-4">
+	<b-container id="loginFormContainer" class="my-5 py-4">
 		<b-row align-content="center" align-h="center" align-v="stretch">
 			<b-col cols="10">
 				<h1 id="loginTitle" class="text-left">
@@ -17,9 +17,15 @@
 		</b-row>
 		<b-row align-content="center" align-h="center" align-v="stretch">
 			<b-col class="my-5">
-				<ValidationObserver #default="{ handleSubmit }" slim>
-					<b-form v-if="auth.profile.id === ''" @submit.prevent="handleSubmit(dispatchLogin)">
+				<ValidationObserver ref="loginObserver" #default="{ handleSubmit }" slim>
+					<b-form
+						v-if="auth.profile.id === '' || auth.profile.id === undefined"
+						id="loginForm"
+						ref="loginForm"
+						@submit.prevent="handleSubmit(dispatchLogin)"
+					>
 						<ValidationProvider
+							ref="usernameProvider"
 							#default="{ valid, errors }"
 							:rules="{ required: true, email: true }"
 							name="Minecraft user name"
@@ -34,18 +40,20 @@
 							>
 								<b-form-input
 									id="username-input"
+									ref="usernameInput"
 									v-model="formData.username"
 									type="text"
 									:state="isValid(errors, valid)"
 									placeholder="Enter your Minecraft email"
 									size="lg"
 								></b-form-input>
-								<b-form-invalid-feedback id="userNameLiveFeedback">{{
-									errors[0]
-								}}</b-form-invalid-feedback>
+								<b-form-invalid-feedback ref="usernameError" :state="isValid(errors, valid)">
+									{{ errors[0] }}
+								</b-form-invalid-feedback>
 							</b-form-group>
 						</ValidationProvider>
 						<ValidationProvider
+							ref="passwordProvider"
 							#default="{ valid, errors }"
 							:rules="{ required: true, min: 6 }"
 							name="Minecraft password"
@@ -60,18 +68,26 @@
 							>
 								<b-form-input
 									id="password-input"
+									ref="passwordInput"
 									v-model="formData.password"
 									type="password"
 									:state="isValid(errors, valid)"
 									placeholder="Enter your Minecraft password"
 									size="lg"
 								></b-form-input>
-								<b-form-invalid-feedback id="passwordLiveFeedback">{{
-									errors[0]
-								}}</b-form-invalid-feedback>
+								<b-form-invalid-feedback ref="passwordError" :state="isValid(errors, valid)">
+									{{ errors[0] }}
+								</b-form-invalid-feedback>
 							</b-form-group>
 						</ValidationProvider>
-						<b-button style="dark" variant="outline-primary" size="lg" type="submit" block>
+						<b-button
+							ref="loginButton"
+							style="dark"
+							variant="outline-primary"
+							size="lg"
+							type="submit"
+							block
+						>
 							Login
 							<font-awesome-icon :icon="['fas', 'sign-in-alt']" />
 						</b-button>
@@ -80,7 +96,7 @@
 			</b-col>
 		</b-row>
 		<b-row
-			v-if="headUrl !== '' && auth.profile.id !== ''"
+			v-if="(headUrl !== '' && auth.profile.id !== '') || auth.profile.id !== undefined"
 			align-content="center"
 			align-h="center"
 			align-v="stretch"
@@ -97,8 +113,8 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import { isValid, storeItems, getItem } from '@/app/common-functions';
-import { SimpleProfile } from '@/app/common-types';
+import { isValid, storeItems, getItem } from '@/app/commonFunctions';
+import { SimpleProfile } from '@/app/commonTypes';
 import { dispatchLogin } from '@/app/services/auth';
 import Swal from 'sweetalert2';
 import _ from 'lodash';
