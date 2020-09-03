@@ -8,10 +8,6 @@
 		"email": "D4RKAR_117@outlook.com"
 	},
 	"scripts": {
-		"serve": "vue-cli-service serve",
-		"build": "vue-cli-service build",
-		"test:unit": "vue-cli-service test:unit",
-		"lint": "vue-cli-service lint",
 		"electron:build": "vue-cli-service electron:build",
 		"electron:serve": "vue-cli-service electron:serve",
 		"electron:generate-icons": "electron-icon-builder --input=./public/icon.png --output=build --flatten",
@@ -20,7 +16,9 @@
 		"build:linux": "npm run electron:build -- --linux",
 		"build:mac": "npm run electron:build -- --mac",
 		"build:win": "npm run electron:build -- --win",
-		"build:all": "npm run electron:build -- -mwl"
+		"build:all": "npm run electron:build -- -mwl",
+		"test:unit": "vue-cli-service test:unit",
+		"lint": "vue-cli-service lint"
 	},
 	"main": "background.js",
 	"dependencies": {

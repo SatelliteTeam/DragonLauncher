@@ -2,14 +2,13 @@ name: CI Workflow
 
 on:
   push:
-    branches: 
-      - dev 
-      - master
+    branches:
+      - dev
   pull_request:
     branches:
       - dev
       - master
-      
+
 jobs:
   perform_tests:
     name: Perform Tests and report code coverage
