@@ -31,11 +31,7 @@ jobs:
           npm ci
           npm run test:unit
           npm run build:all
-      - name: Upload coverage reports to codecov
-        uses: codecov/codecov-action@v1
+      - name: Upload coverage reports to coveralls
+        uses: coverallsapp/github-action@master
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage/clover.xml
-          flags: unittests | integration
-          name: codecov-coverage
-          fail_ci_if_error: false
+          github_token: ${{ secrets.COVERALLS_TOKEN }}
