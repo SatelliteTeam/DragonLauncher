@@ -114,7 +114,7 @@
 import Vue from 'vue';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 import { isValid, storeItems, getItem } from '@/app/commonFunctions';
-import { SimpleProfile } from '@/app/commonTypes';
+import { SimpleProfile } from '@/app';
 import { dispatchLogin } from '@/app/services/auth';
 import Swal from 'sweetalert2';
 import _ from 'lodash';
@@ -153,6 +153,7 @@ export default Vue.extend({
 				this.storeAuth(accessToken, clientToken, selectedProfile);
 				this.auth.profile = selectedProfile;
 			} catch (err) {
+				console.error(typeof err);
 				if (err.statusCode === 403 && err.errorMessage === 'Invalid credentials. Invalid username or password.')
 					Swal.fire({
 						icon: 'error',
