@@ -28,7 +28,7 @@
 							ref="usernameProvider"
 							#default="{ valid, errors }"
 							:rules="{ required: true, email: true }"
-							name="Minecraft user name"
+							name="Minecraft email"
 							slim
 						>
 							<b-form-group
@@ -113,7 +113,7 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import { isValid, storeItems, getItem } from '@/app/commonFunctions';
+import { isValid, storeItems, getItem } from '@/app/tools/commonFunctions';
 import { SimpleProfile } from '@/app';
 import { dispatchLogin } from '@/app/services/auth';
 import Swal from 'sweetalert2';

@@ -62,7 +62,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue';
-import Anime from 'animejs';
+import { animateLogoBody, animateLogoLines } from '@/app/tools/animations';
 export default Vue.extend({
 	name: 'SVGLogo',
 	props: {
@@ -77,49 +77,13 @@ export default Vue.extend({
 	methods: {
 		animateLogo: async function(): Promise<boolean> {
 			try {
-				await this.drawLines();
-				await this.drawBody();
+				await animateLogoLines(this.duration, this.direction, this.delay, this.loop);
+				await animateLogoBody(this.duration, this.direction, this.delay, this.loop);
 				return true;
 			} catch (error) {
 				console.error(error);
 				return false;
 			}
-		},
-		drawLines: async function(): Promise<void> {
-			await Anime.timeline({
-				targets: '#svglogo .linedraw',
-				strokeDashoffset: [Anime.setDashoffset, 0],
-				easing: 'easeInOutSine',
-				duration: this.duration,
-				delay: this.delay,
-				direction: this.direction,
-				loop: this.loop,
-			}).add({
-				fill: ['none', '#878787'],
-				duration: 3000,
-				delay: 500,
-			}).finished;
-		},
-		drawBody: async function(): Promise<void> {
-			await Anime.timeline({
-				targets: '#svglogo .bodydraw',
-				fill: ['none', '#171717'],
-				easing: 'easeInOutSine',
-				duration: this.duration / 3,
-				direction: this.direction,
-				delay: 0,
-				loop: this.loop,
-			})
-				.add({
-					targets: '#svglogo .detaildraw',
-					fill: ['none', '#282828'],
-					easing: 'easeInOutSine',
-					duration: this.duration / 3,
-					direction: this.direction,
-					loop: this.loop,
-				})
-				.add({ targets: '#svglogo .mindraw', fill: ['none', '#5117a2'], duration: this.duration / 4, delay: 0 })
-				.finished;
 		},
 	},
 });

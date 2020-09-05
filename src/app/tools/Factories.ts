@@ -6,7 +6,7 @@ import { fab } from '@fortawesome/free-brands-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
-import { setupVee } from '@/app/vee-validate';
+import { setupVee } from '@/app/tools/Functions';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
 
 export function localVueFactory() {

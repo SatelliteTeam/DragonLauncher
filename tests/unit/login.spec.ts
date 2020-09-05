@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import { localVueFactory } from '@/app/testFactories';
+import { localVueFactory } from '@/app/tools/Factories';
 // import flushPromises from 'flush-promises';
 import Login from '@/components/composed/LoginForm.vue';
 // import { ValidationProvider } from 'vee-validate';
