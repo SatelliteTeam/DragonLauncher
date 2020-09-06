@@ -30,4 +30,8 @@ html, body, #app {
 #form-wrapper{
 	transition: visibility 0.5s ease-in-out;
 	visibility: hidden;
+
+	#loginFormData{
+		transition: all 0.5s ease-in-out;
+	}
 }

@@ -77,3 +77,13 @@ export function animateLoginForm() {
 			width: ['0%', '75%'],
 		});
 }
+
+export function animateFormData() {
+	Anime({
+		targets: '#form-wrapper #loginFormData',
+		opacity: [1, 0],
+		duration: 2500,
+		direction: 'normal',
+		easing: 'easeInOutQuad',
+	});
+}

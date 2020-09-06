@@ -69,17 +69,19 @@ npm run build:all
 ```
 npm run build:win
 ```
+> For windows builds are needed to compilate using a windows environment or in Linux Systems wine is required
+
 #### For MacOS targeted builds use
 ```
 npm run build:mac
 ```
-**__MacOS default package target are .dmg__**
+> MacOS default package target are .dmg
 
 #### For Linux targeted builds use
 ```
 npm run build:linux
 ```
-**__Linux default package target are .deb__**
+> Linux default package target are .deb
 
 ---
 ### Run your unit tests

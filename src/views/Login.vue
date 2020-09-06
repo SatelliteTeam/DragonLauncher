@@ -23,7 +23,7 @@
 import Vue from 'vue';
 import Logo from '@/components/single/SvgLogo.vue';
 import LoginForm from '@/components/composed/LoginForm.vue';
-import { animateLoginForm } from '@/app/tools/animations';
+import { animateLoginForm } from '@/app/tools/Animations';
 export default Vue.extend({
 	name: 'Login',
 	components: {

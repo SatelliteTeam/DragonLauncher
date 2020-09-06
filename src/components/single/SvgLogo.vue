@@ -62,7 +62,7 @@
 </template>
 <script lang="ts">
 import Vue from 'vue';
-import { animateLogoBody, animateLogoLines } from '@/app/tools/animations';
+import { animateLogoBody, animateLogoLines } from '@/app/tools/Animations';
 export default Vue.extend({
 	name: 'SVGLogo',
 	props: {

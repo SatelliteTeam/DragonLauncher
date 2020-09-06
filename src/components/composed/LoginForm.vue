@@ -15,7 +15,7 @@
 				</h1>
 			</b-col>
 		</b-row>
-		<b-row align-content="center" align-h="center" align-v="stretch">
+		<b-row id="loginFormData" align-content="center" align-h="center" align-v="stretch">
 			<b-col class="my-5">
 				<ValidationObserver ref="loginObserver" #default="{ handleSubmit }" slim>
 					<b-form
@@ -113,9 +113,10 @@
 <script lang="ts">
 import Vue from 'vue';
 import { ValidationObserver, ValidationProvider } from 'vee-validate';
-import { isValid, storeItems, getItem } from '@/app/tools/commonFunctions';
-import { SimpleProfile } from '@/app';
+import { isValid, storeItems, getItem } from '@/app/tools/Functions';
+import { SimpleProfile, CompleteAuthException } from '@/app';
 import { dispatchLogin } from '@/app/services/auth';
+import { animateFormData } from '@/app/tools/Animations';
 import Swal from 'sweetalert2';
 import _ from 'lodash';
 export default Vue.extend({
@@ -152,9 +153,13 @@ export default Vue.extend({
 				const { selectedProfile, accessToken, clientToken } = auth;
 				this.storeAuth(accessToken, clientToken, selectedProfile);
 				this.auth.profile = selectedProfile;
+				animateFormData();
 			} catch (err) {
-				console.error(typeof err);
-				if (err.statusCode === 403 && err.errorMessage === 'Invalid credentials. Invalid username or password.')
+				const exception = err as CompleteAuthException;
+				if (
+					exception.statusCode === 403 &&
+					exception.errorMessage === 'Invalid credentials. Invalid username or password.'
+				)
 					Swal.fire({
 						icon: 'error',
 						titleText: 'Invalid credentials',
@@ -162,7 +167,15 @@ export default Vue.extend({
 						timer: 2500,
 						timerProgressBar: true,
 					});
-				else console.error(err);
+				else {
+					Swal.fire({
+						icon: 'error',
+						titleText: 'Invalid credentials',
+						text: `Unexpected error ocurred with code ${exception.statusCode}`,
+						timer: 2500,
+						timerProgressBar: true,
+					});
+				}
 			}
 		},
 		isValid: function(errors: string[], valid: boolean | undefined): boolean | null {
